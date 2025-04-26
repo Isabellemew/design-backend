@@ -1,8 +1,8 @@
 package handlers
 
 import (
-    "internal/db"
-    "internal/models"
+    "github.com/Isabellemew/design-backend/internal/db"
+	"github.com/Isabellemew/design-backend/internal/models"
     "github.com/gin-gonic/gin"
     "net/http"
     "golang.org/x/crypto/bcrypt"

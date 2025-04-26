@@ -1,12 +1,12 @@
 package handlers
 
 import (
-    "internal/db"
-    "internal/models"
-    "github.com/gin-gonic/gin"
-    "golang.org/x/crypto/bcrypt"
-    "log"
-    "net/http"
+	"log"
+	"net/http"
+    "github.com/Isabellemew/design-backend/internal/db"
+	"github.com/Isabellemew/design-backend/internal/models"
+	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
 )
 
 func Register(c *gin.Context) {

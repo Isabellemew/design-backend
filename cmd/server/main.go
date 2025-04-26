@@ -1,8 +1,8 @@
 package main
 
 import (
-	"internal/db"
-	"internal/handlers"
+	"github.com/Isabellemew/design-backend/internal/db"
+	"github.com/Isabellemew/design-backend/internal/handlers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"time"

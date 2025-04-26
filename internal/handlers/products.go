@@ -3,8 +3,8 @@ package handlers
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"internal/models"
-	"internal/db"
+    "github.com/Isabellemew/design-backend/internal/db"
+	"github.com/Isabellemew/design-backend/internal/models"
 )
 
 func SearchProducts(c *gin.Context) {
@@ -22,10 +22,15 @@ func SearchProducts(c *gin.Context) {
 func GetProducts(c *gin.Context){
 
     var categories []models.Category
-    if err := db.DB.Find(&categories).Error; err != nil {
+    if err := db.DB.Preload("Products").Find(&categories).Error; err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": "Ошибка при запросе к базе данных"})
         return
     }
+    // func GetAll(db *gorm.DB) ([]User, error) {
+    //     var users []User
+    //     err := db.Model(&User{}).Preload("CreditCards").Find(&users).Error
+        // return users, err
+    // }
 
-    c.JSON(http.StatusOK, products)
+    c.JSON(http.StatusOK, categories)
 }

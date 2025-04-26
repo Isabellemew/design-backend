@@ -10,11 +10,12 @@ type Product struct {
 }
 
 type Category struct {
+    ID         uint   `json:"id" gorm:"primaryKey"`
 	Name     string    `json:"name"`
 	Img      string    `json:"img"`
-	Products []Product `json:"products"`
+	Products []Product `json:"products" gorm:"foreignKey:CategoryID"`
 }
-
+// CreditCards []CreditCard `gorm:"foreignKey:UserRefer"`
 type Catalog struct {
 	Categories []Category `json:"categories"`
 }
