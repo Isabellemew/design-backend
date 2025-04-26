@@ -7,12 +7,3 @@ type User struct {
     Password     string `json:"password"`      // если ты принимаешь пароль от клиента
     PasswordHash string `json:"-"`             // если ты хранишь хеш в БД
 }
-
-type products struct {
-	ID       int
-	Name     string
-    Price string
-    img string 
-    author string
-	Category string
-}

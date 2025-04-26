@@ -1,8 +1,8 @@
 package main
 
 import (
-	"backend/internal/db"
-	"backend/internal/handlers"
+	"internal/db"
+	"internal/handlers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"time"
@@ -24,7 +24,8 @@ func main() {
 	{
 		api.POST("/users", handlers.Register)
 		api.POST("/login", handlers.Login)
-		api.GET("/products/search", handlers.GetProducts)
+		api.GET("/products/search", handlers.SearchProducts)
+		api.GET("/products", handlers.GetProducts)
 	}
 
 	router.GET("/", func(c *gin.Context) {

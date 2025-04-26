@@ -1,16 +1,28 @@
 package handlers 
 
 import (
-	"backend/internal/db"
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"internal/models"
+	"internal/db"
 )
 
-func GetProducts(c *gin.Context) {
+func SearchProducts(c *gin.Context) {
     query := c.Query("q")
 
-    var products []db.Product
+    var products []models.Product
     if err := db.DB.Where("LOWER(name) LIKE LOWER(?)", "%"+query+"%").Find(&products).Error; err != nil {
+        c.JSON(http.StatusInternalServerError, gin.H{"error": "Ошибка при запросе к базе данных"})
+        return
+    }
+
+    c.JSON(http.StatusOK, products)
+}
+
+func GetProducts(c *gin.Context){
+
+    var categories []models.Category
+    if err := db.DB.Find(&categories).Error; err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": "Ошибка при запросе к базе данных"})
         return
     }

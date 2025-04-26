@@ -6,19 +6,10 @@ import (
 
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
+    // "backend/internal/models"
 )
 
 var DB *gorm.DB
-
-// 👇 Определение модели Product
-type Product struct {
-    ID         uint   `json:"id" gorm:"primaryKey"`
-    Name       string `json:"name"`
-    Price      string `json:"price"`
-    ImageURL   string `json:"image_url"`
-    Brand      string `json:"brand"`
-    CategoryID uint   `json:"category_id"`
-}
 
 // 👇 Инициализация подключения и миграции
 func InitDB() {
@@ -31,8 +22,8 @@ func InitDB() {
     fmt.Println("✅ Подключение к базе данных успешно установлено!")
 
     // Автомиграция модели Product
-    err = DB.AutoMigrate(&Product{})
-    if err != nil {
-        log.Fatal("❌ Ошибка миграции модели Product: ", err)
-    }
+    // err = DB.AutoMigrate(&models.Product{})
+    // if err != nil {
+    //     log.Fatal("❌ Ошибка миграции модели Product: ", err)
+    // }
 }
