@@ -1,0 +1,6 @@
+*.exe
+*.log
+/vendor/
+/.env
+*.v
+*.db

@@ -1,0 +1,1 @@
+router.HandleFunc("/api/users", CreateUser(db)).Methods("POST")

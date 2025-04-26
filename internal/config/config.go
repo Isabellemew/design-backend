@@ -1,0 +1,1 @@
+dbConnStr := "postgres://postgres:1234567@localhost/users?sslmode=disable"
