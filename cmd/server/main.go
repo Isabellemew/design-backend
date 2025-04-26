@@ -5,9 +5,9 @@ import (
 	"backend/internal/handlers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	"net/http"
 	"time"
 )
+
 
 func main() {
 	router := gin.Default()
@@ -24,7 +24,7 @@ func main() {
 	{
 		api.POST("/users", handlers.Register)
 		api.POST("/login", handlers.Login)
-		api.POST("/products/search", GetProducts)
+		api.POST("/products/search", handlers.GetProducts)
 	}
 
 	router.GET("/", func(c *gin.Context) {
@@ -41,16 +41,4 @@ func main() {
 
 	db.InitDB() // подключение к БД
 	router.Run(":8080")
-}
-
-func GetProducts(c *gin.Context) {
-    query := c.Query("q")
-
-    var products []db.Product
-    if err := db.DB.Where("LOWER(name) LIKE LOWER(?)", "%"+query+"%").Find(&products).Error; err != nil {
-        c.JSON(http.StatusInternalServerError, gin.H{"error": "Ошибка при запросе к базе данных"})
-        return
-    }
-
-    c.JSON(http.StatusOK, products)
 }

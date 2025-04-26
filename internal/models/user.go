@@ -8,7 +8,7 @@ type User struct {
     PasswordHash string `json:"-"`             // если ты хранишь хеш в БД
 }
 
-type зroducts struct {
+type products struct {
 	ID       int
 	Name     string
     Price string
