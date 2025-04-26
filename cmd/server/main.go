@@ -24,7 +24,7 @@ func main() {
 	{
 		api.POST("/users", handlers.Register)
 		api.POST("/login", handlers.Login)
-		api.POST("/products/search", handlers.GetProducts)
+		api.GET("/products/search", handlers.GetProducts)
 	}
 
 	router.GET("/", func(c *gin.Context) {
