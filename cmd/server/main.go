@@ -13,12 +13,13 @@ func main() {
 	router := gin.Default()
 
 	router.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"}, // уточни фронтенд-URL
+		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
 		AllowCredentials: true,
 		MaxAge:           12 * time.Hour,
 	}))
+	router.Static("/products", "./products")
 
 	api := router.Group("/api")
 	{
@@ -26,6 +27,8 @@ func main() {
 		api.POST("/login", handlers.Login)
 		api.GET("/products/search", handlers.SearchProducts)
 		api.GET("/products", handlers.GetProducts)
+		api.GET("/categories", handlers.GetCategories)
+		api.POST("/Message", handlers.SendMessage)
 	}
 
 	router.GET("/", func(c *gin.Context) {

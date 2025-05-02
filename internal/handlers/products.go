@@ -26,11 +26,6 @@ func GetProducts(c *gin.Context){
         c.JSON(http.StatusInternalServerError, gin.H{"error": "Ошибка при запросе к базе данных"})
         return
     }
-    // func GetAll(db *gorm.DB) ([]User, error) {
-    //     var users []User
-    //     err := db.Model(&User{}).Preload("CreditCards").Find(&users).Error
-        // return users, err
-    // }
 
     c.JSON(http.StatusOK, categories)
 }
