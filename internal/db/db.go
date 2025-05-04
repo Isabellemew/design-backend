@@ -6,7 +6,7 @@ import (
 
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
-    // "backend/internal/models"
+    "github.com/Isabellemew/design-backend/internal/models"
 )
 
 var DB *gorm.DB
@@ -21,9 +21,8 @@ func InitDB() {
     }
     fmt.Println("✅ Подключение к базе данных успешно установлено!")
 
-    // Автомиграция модели Product
-    // err = DB.AutoMigrate(&models.Product{})
-    // if err != nil {
-    //     log.Fatal("❌ Ошибка миграции модели Product: ", err)
-    // }
+    err = DB.AutoMigrate(&models.Order{}, &models.OrderItem{})
+    if err != nil {
+        log.Fatal("❌ Ошибка миграции модели Order: ", err)
+    }
 }
